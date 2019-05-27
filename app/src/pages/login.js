@@ -32,7 +32,9 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
+        <View style={{ alignItems: 'center',marginTop:'10%'}}> 
+          <Text>Authentication</Text>
+        </View>
         <TextInput
           placeholder="email"
           style={styles.input}
@@ -45,11 +47,13 @@ export default class Login extends React.Component {
           secureTextEntry={true}
           onChangeText={(password) => this.setState({password})}
         />
-        <Button
+        
+         <Button
           onPress={this.login}
           title="Login"
-          color="#841584"
-        />
+        />  
+       
+       
       </View>
     );
   }
@@ -58,18 +62,20 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'gray'
+    backgroundColor: 'white'
   },
   input: {
     width: 250,
-    backgroundColor: 'red',
-    borderRadius: 25,
+    backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    marginVertical: 4
+    marginVertical: 4,
+    
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
   },
+  
   a: {
     width: 500
   }

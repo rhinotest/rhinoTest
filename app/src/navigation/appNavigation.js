@@ -6,11 +6,7 @@ import AdminHome from '../pages/adminHome';
 import UserHome from '../pages/userHome';
 
 export default createAppContainer(createSwitchNavigator({
-  AdminHome,
-  
   Login,
- 
-  
-  
+  AdminHome,
   UserHome
 }));
