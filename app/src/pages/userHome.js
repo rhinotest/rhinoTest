@@ -5,7 +5,7 @@ export default class UserHome extends Component {
   render() {
     return (
       <View>
-        <Text>User Home</Text>
+        <Text>No Data</Text>
       </View>
     )
   }
