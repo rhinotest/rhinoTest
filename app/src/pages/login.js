@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert,YellowBox } from 'react-native';
 import data from '../../data/data';
 
 export default class Login extends React.Component {
@@ -30,6 +30,7 @@ export default class Login extends React.Component {
   }
 
   render() {
+    YellowBox.ignoreWarnings(['Remote debugger']);
     return (
       <View style={styles.container}>
         <View style={{ alignItems: 'center',marginTop:'10%'}}> 
