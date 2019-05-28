@@ -6,7 +6,6 @@ export default class Login extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       email: null,
       passwor: null
@@ -20,7 +19,6 @@ export default class Login extends React.Component {
       Alert.alert('Inputs cannot be empty');
     }
     var results = data.filter(function (entry) { return entry.email === email && entry.password === password });
-
     if(results.length != 1) {
       Alert.alert('Invalid credentials');
     } else {
@@ -48,13 +46,10 @@ export default class Login extends React.Component {
           secureTextEntry={true}
           onChangeText={(password) => this.setState({password})}
         />
-        
          <Button
           onPress={this.login}
           title="Login"
-        />  
-       
-       
+        /> 
       </View>
     );
   }
@@ -76,7 +71,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#d6d7da',
   },
-  
   a: {
     width: 500
   }

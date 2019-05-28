@@ -12,8 +12,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <AppNavigator />
         </View>
-   </Provider>
-     
+      </Provider>
     );
   }
 }
