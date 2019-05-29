@@ -1,14 +1,14 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { View} from 'react-native';
+import { View, Button} from 'react-native';
 import { Text, Content, Accordion } from "native-base";
 import { requestApiData } from "../../actions";
 class Home extends React.Component {
   componentDidMount() {
     this.props.requestApiData();
   }
-
+  
   loadTemplates(results) {
     let dataArray = [];
     if (results !== undefined && results.length > 0) {

@@ -1,18 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert,YellowBox } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert,YellowBox,AsyncStorage } from 'react-native';
 import data from '../../data/data';
-
 export default class Login extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
-      passwor: null
+      email: '',
+      passwor: ''
     }
   }
-
-  login = () => {
+  _storeData = async (results) => {
+    try {
+      await AsyncStorage.setItem('user', results);
+    } catch (error) {
+      // Error saving data
+    }
+  };
+  login = async () => {
     const { email, password } = this.state;
     const { navigate } = this.props.navigation;
     if(!email || !password) {
@@ -22,9 +27,33 @@ export default class Login extends React.Component {
     if(results.length != 1) {
       Alert.alert('Invalid credentials');
     } else {
-      const page = results[0].type === 'admin'? "AdminHome": "UserHome"
+        await this._storeData(JSON.stringify(results))
+        let val = await this._retrieveData();
+        const page = results[0].type === 'admin'? "AdminHome": "UserHome"
+        navigate(page);
+    }
+  }
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if (value !== null) {
+        // We have data!!
+        let data = JSON.parse(value).shift()
+        return  data
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  async componentDidMount(){
+    const { navigate } = this.props.navigation;
+    let val = await this._retrieveData(); 
+    if(val !== undefined){
+      const page = "AdminHome"
       navigate(page);
     }
+   
   }
 
   render() {
@@ -38,6 +67,7 @@ export default class Login extends React.Component {
           placeholder="email"
           style={styles.input}
           onChangeText={(email) => this.setState({email})}
+          value={this.state.email}
         />
         <TextInput
           placeholder="password"
@@ -45,6 +75,7 @@ export default class Login extends React.Component {
           type="password"
           secureTextEntry={true}
           onChangeText={(password) => this.setState({password})}
+          value={this.state.password}
         />
          <Button
           onPress={this.login}

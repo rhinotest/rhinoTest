@@ -1,7 +1,7 @@
 [
   {
-    "email": "admin@gmail.com",
-    "password": "admin",
+    "email": "root",
+    "password": "root",
     "type": "admin"
   },
   {

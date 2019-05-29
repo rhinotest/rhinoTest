@@ -7,6 +7,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "async-storage": "^0.1.0",
     "axios": "^0.18.0",
     "expo": "^32.0.0",
     "native-base": "^2.12.1",
@@ -15,7 +16,8 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "sync-storage": "^0.4.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
